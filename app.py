@@ -36,7 +36,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") == "Google Home":
+    if req.get("result").get("action") == "GoogleHome":
          result = req.get("result")
     parameters = result.get("parameters")
     device = parameters.get("device")
