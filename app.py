@@ -57,15 +57,7 @@ def processRequest(req):
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
 		res = makeWebhookResult(data)
-		
-	elif req.get("result").get("action") == "Repeat":
-		return {
-			"speech": speech,
-			"displayText": speech,
-			# "data": data,
-			# "contextOut": [],
-			"source": "apiai-weather-webhook-sample"
-		}
+
 		
 		
 
