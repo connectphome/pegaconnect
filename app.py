@@ -38,21 +38,22 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") == "GoogleHome":
          result = req.get("result")
-    parameters = result.get("parameters")
-    device = parameters.get("device")
-
+         parameters = result.get("parameters")
+         device = parameters.get("device")
+            device = "Google Home"
+   res = makeWebhookResult(device)
+      return res
         
         
     #return {}
     #baseurl = "https://query.yahooapis.com/v1/public/yql?"
     #yql_query = makeYqlQuery(req)
     #if yql_query is None:
-     #   return {}
+     #return {}
     #yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-#    result = urlopen(yql_url).read()
-#    data = json.loads(result)
- res = makeWebhookResult(device)
-   return res
+#result = urlopen(yql_url).read()
+#data = json.loads(result)
+   
 
 
 
