@@ -36,6 +36,8 @@ def webhook():
 
 
 def processRequest(req):
+    data = ""
+    res = ""
     if req.get("result").get("action") == "GoogleHome":
         res = makeWebhookResult(data)
     elif req.get("result").get("action") == "yahooWeatherForecast":
