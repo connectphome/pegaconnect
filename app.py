@@ -36,18 +36,19 @@ def webhook():
 
 
 def processRequest(req):
-	if req.get("result").get("action") == "GoogleHome":
-			speech = "Today in "
-			print("Response:")
-			print(speech)
-			return {
-				"speech": speech,
-				"displayText": speech,
-				# "data": data,
-				# "contextOut": [],
-				"source": "apiai-weather-webhook-sample"
-			}
-	if req.get("result").get("action") == "yahooWeatherForecast":
+    if req.get("result").get("action") == "GoogleHome":
+        speech = "Today in "
+        print("Response:")
+        print(speech)
+
+        return {
+			"speech": speech,
+			"displayText": speech,
+			# "data": data,
+			# "contextOut": [],
+			"source": "apiai-weather-webhook-sample"
+		}
+	elif req.get("result").get("action") == "yahooWeatherForecast":
 		baseurl = "https://query.yahooapis.com/v1/public/yql?"
 		yql_query = makeYqlQuery(req)
 		if yql_query is None:
@@ -55,8 +56,7 @@ def processRequest(req):
 		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
-		ares = makeWebhookResult(data)
-
+		res = makeWebhookResult(data)
 	return res
 
 
@@ -87,8 +87,8 @@ def makeWebhookResult(data):
 
 
 if __name__ == '__main__':
-	port = int(os.getenv('PORT', 5000))
+    port = int(os.getenv('PORT', 5000))
 
-	print("Starting app on port %d" % port)
+    print("Starting app on port %d" % port)
 
-	app.run(debug=False, port=port, host='0.0.0.0')
+    app.run(debug=False, port=port, host='0.0.0.0')
