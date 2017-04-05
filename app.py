@@ -36,9 +36,6 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") == "GoogleHome":
-        res = makeWebhookResults(data)
-        return {}
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
@@ -63,8 +60,27 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
+    query = data.get('query')
+    if query is None:
+        return {}
 
+    result = query.get('results')
+    if result is None:
+        return {}
 
+    channel = result.get('channel')
+    if channel is None:
+        return {}
+
+    item = channel.get('item')
+    location = channel.get('location')
+    units = channel.get('units')
+    if (location is None) or (item is None) or (units is None):
+        return {}
+
+    condition = item.get('condition')
+    if condition is None:
+        return {}
 
     # print(json.dumps(item, indent=4))
 
