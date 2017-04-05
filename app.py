@@ -37,7 +37,10 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") == "Google Home":
-        
+         result = req.get("result")
+    parameters = result.get("parameters")
+    device = parameters.get("device")
+
         
         
     #return {}
@@ -95,8 +98,8 @@ def makeWebhookResult(data):
     print(speech)
 
     return {
-        "speech": "You have registered Google Home",
-        "displayText": "You have registered Google Home",
+        "speech": "You have registered " + device,
+        "displayText": "You have registered " + device,
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
