@@ -37,7 +37,8 @@ def webhook():
 
 def processRequest(req):
 	if req.get("result").get("action") == "GoogleHome":
-		speech = "Today in "
+		device = req.get("result").get("parameters").get("device")
+		speech = "Today in " + device
 		return {
 			"speech": speech,
 			"displayText": speech,
@@ -54,6 +55,15 @@ def processRequest(req):
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
 		res = makeWebhookResult(data)
+	elif req.get("result").get("action") == "Repeat":
+		speech = device
+		return {
+			"speech": speech,
+			"displayText": speech,
+			# "data": data,
+			# "contextOut": [],
+			"source": "apiai-weather-webhook-sample"
+		}
 	else:
 		return {}
 	return res
