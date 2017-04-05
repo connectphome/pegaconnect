@@ -51,7 +51,7 @@ def processRequest(req):
     #yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
 #    result = urlopen(yql_url).read()
 #    data = json.loads(result)
- res = makeWebhookResult(data, device)
+ res = makeWebhookResult(device)
    return res
 
 
@@ -66,28 +66,8 @@ def makeYqlQuery(req):
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 
-def makeWebhookResult(data, device):
-    query = data.get('query')
-    if query is None:
-        return {}
-
-    result = query.get('results')
-    if result is None:
-        return {}
-
-    channel = result.get('channel')
-    if channel is None:
-        return {}
-
-    item = channel.get('item')
-    location = channel.get('location')
-    units = channel.get('units')
-    if (location is None) or (item is None) or (units is None):
-        return {}
-
-    condition = item.get('condition')
-    if condition is None:
-        return {}
+def makeWebhookResult(device):
+    
 
     # print(json.dumps(item, indent=4))
 
