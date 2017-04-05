@@ -42,6 +42,7 @@ def processRequest(req):
         device = parameters.get("device")
         device = "Google Home"
         res = makeWebhookResult(device)
+    res = makeWebhookResult(device)
     return res
         
         
