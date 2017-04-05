@@ -37,9 +37,9 @@ def webhook():
 
 def processRequest(req):
 	if req.get("result").get("action") == "GoogleHome":
-        speech = "Today in "
-        print("Response:")
-        print(speech)
+		speech = "Today in "
+		print("Response:")
+		print(speech)
 
         return {
 			"speech": speech,
