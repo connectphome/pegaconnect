@@ -60,7 +60,7 @@ def makeYqlQuery(req):
 	return "GoogleHome"
 
 
-def makeWebhookResult(data)
+def makeWebhookResult(data):
 	speech = data.get("Device")
 	#if data.get("Device") is None:
 	#	speech = "Nothing gotten"
