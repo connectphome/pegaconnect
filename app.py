@@ -36,51 +36,58 @@ def webhook():
 
 
 def processRequest(req):
-	if req.get("result").get("action") == "GoogleHome":
-		device = req.get("result").get("parameters").get("device")
-		baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
-		yql_query = makeYqlQuery(req)
-		if yql_query is None:
-			return {}
-		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-		result = urlopen(yql_url).read()
-		data = json.loads(result)
-		res = makeWebhookResult(data)
-		return res
-		
-		
-	elif req.get("result").get("action") == "yahooWeatherForecast":
-		baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
-		yql_url = baseurl + "type=GoogleHome" + "&format=json"
-		result = urlopen(yql_url).read()
-		data = json.loads(result)
-		res = makeWebhookResult(data)
-	elif req.get("result").get("action") == "Repeat":
-		speech = device
-		return {
-			"speech": speech,
-			"displayText": speech,
-			# "data": data,
-			# "contextOut": [],
-			"source": "apiai-weather-webhook-sample"
-		}
-	else:
-		return {}
-	return res
-	
+    if req.get("result").get("action") == "GoogleHome":
+        return {}
+    baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
+    yql_query = makeYqlQuery(req)
+    if yql_query is None:
+        return {}
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult(data)
+    return res
+
+
 def makeYqlQuery(req):
+    #result = req.get("result")
+    #parameters = result.get("parameters")
+    #city = parameters.get("geo-city")
+    #if city is None:
+    #    return None
+
     return "type=GoogleHome"
 
+
 def makeWebhookResult(data):
-	type = data.get('Device')
-    
+    thing1 = data.get('Device')
+    #if query is None:
+    #    return {}
+
+    #result = query.get('results')
+    #if result is None:
+    #    return {}
+
+    #channel = result.get('channel')
+    #if channel is None:
+    #    return {}
+
+    #item = channel.get('item')
+    #location = channel.get('location')
+    #units = channel.get('units')
+    #if (location is None) or (item is None) or (units is None):
+    #    return {}
+
+    #condition = item.get('condition')
+    #if condition is None:
+    #    return {}
 
     # print(json.dumps(item, indent=4))
 
-	speech = type
+    speech = thing1
 
-	print("Response:")
-	print(speech)
+    print("Response:")
+    print(speech)
 
     return {
         "speech": speech,
@@ -89,7 +96,6 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
-
 
 
 if __name__ == '__main__':
