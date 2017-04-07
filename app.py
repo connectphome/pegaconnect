@@ -82,14 +82,7 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get('query')
-    
-    result = query.get('results')
-   
-
-    channel = result.get('channel')
-   
-    type = channel.get('Device')
+    type = data.get('Device')
     
 
     # print(json.dumps(item, indent=4))
