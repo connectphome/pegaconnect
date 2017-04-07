@@ -45,15 +45,10 @@ def processRequest(req):
 		yql_url = baseurl + urlencode({'type=device'}) + "&format=json"
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
-		res = makeWebhookResult(data)
-		query = data.get('query')
-		result = query.get('results')
-		channel = result.get('channel')
-		type = channel.get('type')
-		speech = type
+		#res = makeWebhookResult(data)
 		return {
-			"speech": speech,
-			"displayText": speech,
+			"speech": data,
+			"displayText": data,
 			# "data": data,
 			# "contextOut": [],
 			"source": "apiai-weather-webhook-sample"
