@@ -60,10 +60,10 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-	if data.get("Device") is None:
-		speech = "Nothing gotten"
-	else:
-		speech = "Testing Pega"
+	speech = data.get("Device")
+	#if data.get("Device") is None:
+	#	speech = "Nothing gotten"
+	#	speech = "Testing Pega"
 
 
 	return {
