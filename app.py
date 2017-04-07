@@ -46,27 +46,11 @@ def processRequest():
 
 	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?type=GoogleHome"
 	params = {}
-	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),
-			"Content-Type": "application/json", "Accept": "*/*", })
-	#print(json.dumps(params))
+	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
 	result = urllib2.urlopen(req)
 	v = result.read()
 	data = json.loads(v)
 	return makeWebhookResult(data)
-
-
-
-# if req.get("result").get("action") == "GoogleHome":
-# baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
-# yql_query = makeYqlQuery(req)
-# if yql_query is None:
-# return {}
-# yql_url = baseurl + urlencode({'type': yql_query}) + "&format=json"
-# result = urlopen(yql_url).read()
-# data = json.loads(result)
-# res = makeWebhookResult(data)
-# return res
-
 
 
 def makeYqlQuery(req):
@@ -93,8 +77,8 @@ def makeWebhookResult(data):
 
 
 if __name__ == '__main__':
-port = int(os.getenv('PORT', 5000))
+	port = int(os.getenv('PORT', 5000))
 
-print("Starting app on port %d" % port)
+	print("Starting app on port %d" % port)
 
-app.run(debug=False, port=port, host='0.0.0.0')
+	app.run(debug=False, port=port, host='0.0.0.0')
