@@ -4,12 +4,15 @@ from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
 
+
+
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
 import json
 import os
+import urllib2
 
 from flask import Flask
 from flask import request
@@ -32,21 +35,31 @@ def webhook():
     # print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
-    r.headers['Authorization'] = 'Basic YmRvbm5lbGx5OnJ1bGVz'
     return r
 
+def basic_authorization(user, password):
+	s = user + ":" + password
+	return "Basic " + s.enconde("base64").rstrip()
 
 def processRequest(req):
-    if req.get("result").get("action") == "GoogleHome":
-        baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
-        yql_query = makeYqlQuery(req)
-        if yql_query is None:
-            return {}
-        yql_url = baseurl + urlencode({'type': yql_query}) + "&format=json"
-        result = urlopen(yql_url).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data)
-    return res
+	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData"
+	params = {'type': "GoogleHome"}
+	req = urllib2.Request(url,headers = {"Authorization": basic_authorization('bdonnelly','rules'), "Content-Type": "application/json", "Accept": "*/*",}, data = json.dumps(params))
+	result = urllib2.urlopen(req)	
+	return makeWebhookResult(result.read())
+
+
+	# if req.get("result").get("action") == "GoogleHome":
+	# baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
+	# yql_query = makeYqlQuery(req)
+		# if yql_query is None:
+		# return {}
+	# yql_url = baseurl + urlencode({'type': yql_query}) + "&format=json"
+	# result = urlopen(yql_url).read()
+	# data = json.loads(result)
+	# res = makeWebhookResult(data)
+# return res
+
 
 
 def makeYqlQuery(req):
@@ -55,10 +68,10 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get('Device')
-    
-
-    speech = query
+    if data.get('Device') is None:
+        speech = "Nothing gotten"  
+    else:
+        speech = "Testing Pega"
 
     print("Response:")
     print(speech)
