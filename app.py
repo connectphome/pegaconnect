@@ -50,6 +50,7 @@ def processRequest():
 	result = urllib2.urlopen(req)
 	v = result.read()
 	data = json.loads(v)
+	print(data)
 	return makeWebhookResult(data)
 
 
@@ -61,9 +62,7 @@ def makeYqlQuery(req):
 def makeWebhookResult(data):
 	if data.get("Device") is None:
 		speech = "Nothing gotten"
-		print(speech)
 	else:
-		print("else")
 		speech = "Testing Pega"
 
 
