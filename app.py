@@ -47,6 +47,20 @@ def processRequest(req):
 		data = json.loads(result)
 		res = makeWebhookResult(data)
 		}
+		query = data.get('query')
+		result = query.get('results')
+		channel = result.get('channel')
+		type = channel.get('type')
+		speech = type
+		return {
+			"speech": speech,
+			"displayText": speech,
+			# "data": data,
+			# "contextOut": [],
+			"source": "apiai-weather-webhook-sample"
+		}
+		
+		
 	elif req.get("result").get("action") == "yahooWeatherForecast":
 		baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
 		yql_query = makeYqlQuery(req)
