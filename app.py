@@ -41,7 +41,7 @@ def processRequest(req):
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({yql_query}) + "&format=json"
+    yql_url = baseurl + urlencode({'type' : yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
@@ -50,7 +50,7 @@ def processRequest(req):
 
 def makeYqlQuery(req):
 
-    return "type=GoogleHome"
+    return "GoogleHome"
 
 
 def makeWebhookResult(data):
