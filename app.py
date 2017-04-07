@@ -42,18 +42,10 @@ def processRequest(req):
 		yql_query = makeYqlQuery(req)
 		if yql_query is None:
 			return {}
-		yql_url = baseurl + urlencode({'type=device'}) + "&format=json"
+		yql_url = baseurl + urlencode({'type' + device}) + "&format=json"
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
-		speech = data
-		#res = makeWebhookResult(data)
-		return {
-			"speech": data,
-			"displayText": data,
-			# "data": data,
-			# "contextOut": [],
-			"source": "apiai-weather-webhook-sample"
-		}
+		res = makeWebhookResult(data)
 		
 		
 	elif req.get("result").get("action") == "yahooWeatherForecast":
@@ -91,24 +83,18 @@ def makeYqlQuery(req):
 
 def makeWebhookResult(data):
     query = data.get('query')
-    if query is None:
-        return {}
-
+    
     result = query.get('results')
-    if result is None:
-        return {}
+   
 
     channel = result.get('channel')
-    if channel is None:
-        return {}
-
-    type = channel.get('type')
+   
+    type = channel.get('Device')
     
 
     # print(json.dumps(item, indent=4))
 
-    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    speech = type
 
     print("Response:")
     print(speech)
