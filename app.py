@@ -42,11 +42,11 @@ def processRequest(req):
 		yql_query = makeYqlQuery(req)
 		if yql_query is None:
 			return {}
-    		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-   		result = urlopen(yql_url).read()
-   		data = json.loads(result)
-   		res = makeWebhookResult(data)
-   		return res
+		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+		result = urlopen(yql_url).read()
+		data = json.loads(result)
+		res = makeWebhookResult(data)
+		return res
 		
 		
 	elif req.get("result").get("action") == "yahooWeatherForecast":
@@ -72,15 +72,15 @@ def makeYqlQuery(req):
     return "type=GoogleHome"
 
 def makeWebhookResult(data):
-    type = data.get('Device')
+	type = data.get('Device')
     
 
     # print(json.dumps(item, indent=4))
 
-    speech = type
+	speech = type
 
-    print("Response:")
-    print(speech)
+	print("Response:")
+	print(speech)
 
     return {
         "speech": speech,
