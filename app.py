@@ -44,8 +44,8 @@ def processRequest(req):
 			return {}
 		yql_url = baseurl + urlencode({yql_query})
 		result = urllib.urlopen(yql_url).read()
-		data = json.loads(result)
-		res = makeWebhookResult(data)
+		#data = json.loads(result)
+		res = makeWebhookResult(result)
 		return res
 	else:
 		return {}
@@ -62,10 +62,10 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-	if data.get('Device') is None
-		speech = "None yo"
-	else:
-		speech = "Testing Pega"
+	#if data.get('Device') is None:
+	#	speech = "None yo"
+	#else:
+	#	speech = "Testing Pega"
 	#if query is None:
 	#    return {}
 
@@ -89,7 +89,7 @@ def makeWebhookResult(data):
 
 	# print(json.dumps(item, indent=4))
 
-	
+	speech = data
 
 	print("Response:")
 	print(speech)
