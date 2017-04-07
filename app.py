@@ -37,7 +37,6 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") == "GoogleHome":
-        return {}
     baseurl = "http://bdonnelly:rules@acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
