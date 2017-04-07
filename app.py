@@ -45,6 +45,7 @@ def processRequest(req):
 		yql_url = baseurl + urlencode({'type=device'}) + "&format=json"
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
+		speech = data
 		#res = makeWebhookResult(data)
 		return {
 			"speech": data,
