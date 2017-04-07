@@ -94,9 +94,26 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
+    query = data.get('query')
+    if query is None:
+        return {}
 
+    result = query.get('results')
+    if result is None:
+        return {}
 
-    speech = "Today in "
+    channel = result.get('channel')
+    if channel is None:
+        return {}
+
+    type = channel.get('type')
+    
+
+    # print(json.dumps(item, indent=4))
+
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+
     print("Response:")
     print(speech)
 
@@ -107,6 +124,7 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
+
 
 
 if __name__ == '__main__':
