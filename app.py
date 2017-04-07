@@ -40,9 +40,6 @@ def processRequest(req):
 		device = req.get("result").get("parameters").get("device")
 		baseurl = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?"
 		yql_url = baseurl + "type=GoogleHome" + "&format=json"
-		yql_query = makeYqlQuery(req)
-		if yql_query is None:
-			return {}
 		result = urlopen(yql_url).read()
 		data = json.loads(result)
 		res = makeWebhookResult(data)
