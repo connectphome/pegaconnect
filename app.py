@@ -18,6 +18,7 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+
 # Flask app should start in global layout
 app = Flask(__name__)
 
@@ -25,12 +26,9 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST'])
 def webhook():
 	req = request.get_json(silent=True, force=True)
-
 	print("Request:")
 	print(json.dumps(req, indent=4))
-
 	res = processRequest(req)
-
 	res = json.dumps(res, indent=4)
 	# print(res)
 	r = make_response(res)
@@ -41,9 +39,7 @@ def basic_authorization(user, password):
 	s = user + ":" + password
 	return "Basic " + s.encode("base64").rstrip()
 
-def processRequest():
-
-
+def processRequest(data):
 	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntAPIAI2/Services/ProcessData?type=GoogleHome"
 	params = {}
 	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
