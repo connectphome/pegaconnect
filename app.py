@@ -56,7 +56,7 @@ def processRequest(data):
 
 def makeYqlQuery(req):
 
-	return "Hey Matt Lee, we connected to Google Home"
+	return "Google Home"
 
 
 def makeWebhookResult(data):
