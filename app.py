@@ -46,13 +46,9 @@ def processRequest(data):
 	result = urllib2.urlopen(req)
 	v = result.read()
 	data = json.loads(v)
+	return makeWebhookResult(data)
 	
-	speech = data.get("Device")
 	
-	if speech is None:
-		speech = "Nothing"
-	
-	return {"speech": speech,"displayText": speech,"source": "apiai-weather-webhook-sample"}
 
 def makeYqlQuery(req):
 
@@ -60,7 +56,7 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-	speech = data.get("Device")
+	speech = data.get("Message")
 	#if data.get("Device") is None:
 	#	speech = "Nothing gotten"
 	#	speech = "Testing Pega"
