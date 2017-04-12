@@ -43,13 +43,13 @@ def processRequest(data):
 	result = req.get("result")
    	parameters = result.get("parameters")
    	action = parameters.get("Action")
-	worknumber = 6
+	worknumber = parameters.get("WorkNumber")
    	if action is None:
         return None
 
 
 	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
-	parameter = action + "=" worknumber
+	parameter = action + "=" + worknumber
 	url = url + parameter
 	params = {}
 	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
