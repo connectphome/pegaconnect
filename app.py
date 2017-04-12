@@ -40,7 +40,17 @@ def basic_authorization(user, password):
 	return "Basic " + s.encode("base64").rstrip()
 
 def processRequest(data):
-	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?worknumber=6"
+	result = req.get("result")
+   	parameters = result.get("parameters")
+   	action = parameters.get("Action")
+	worknumber = parameter.get("WorkNumber")
+   	if action is None:
+        return None
+
+
+	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
+	parameter = action + "=" worknumber
+	url = url + parameter
 	params = {}
 	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
 	result = urllib2.urlopen(req)
