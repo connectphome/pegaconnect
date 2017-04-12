@@ -43,8 +43,7 @@ def processRequest(req):
 	result = req.get("result")
    	parameters = result.get("parameters")
 	worknumber = parameters.get("number-integer")
-   	if action is None:
-        return None
+   	
 
 
 	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
