@@ -47,7 +47,7 @@ def processRequest(req):
         return None
 
 
-	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?worknumber=6"
+	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
 	parameter = "worknumber=" + worknumber
 	url = url + parameter
 	params = {}
