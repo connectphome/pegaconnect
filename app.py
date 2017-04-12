@@ -48,7 +48,7 @@ def processRequest(req):
 
 
 	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?worknumber=6"
-	#parameter = "worknumber=" + worknumber
+	parameter = "worknumber=" + worknumber
 	url = url + parameter
 	params = {}
 	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
