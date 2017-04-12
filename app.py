@@ -43,7 +43,7 @@ def processRequest(data):
 	result = req.get("result")
    	parameters = result.get("parameters")
    	action = parameters.get("Action")
-	worknumber = parameter.get("WorkNumber")
+	worknumber = 6
    	if action is None:
         return None
 
