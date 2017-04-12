@@ -42,7 +42,7 @@ def basic_authorization(user, password):
 def processRequest(req):
 	result = req.get("result")
    	parameters = result.get("parameters")
-	worknumber = parameters.get("WorkNumber")
+	worknumber = parameters.get("number-integer")
    	if action is None:
         return None
 
