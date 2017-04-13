@@ -40,15 +40,25 @@ def basic_authorization(user, password):
 	return "Basic " + s.encode("base64").rstrip()
 
 def processRequest(req):
-	result = req.get("result")
-   	parameters = result.get("parameters")
-	worknumber = parameters.get("number-integer")
-   	
+	
+	if req.get("result").get("action") == "Escalation":
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
+	
+	if req.get("result").get("action") == "GetStep":
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"	
+	
+	if req.get("result").get("action") == "StartTroubleshoot":
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
+	
+	if req.get("result").get("action") == "Register":
+		result = req.get("result")
+   		parameters = result.get("parameters")
+		worknumber = parameters.get("number-integer")
 
-
-	url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
-	parameter = "worknumber=" + worknumber
-	url = url + parameter
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
+		parameter = "worknumber=" + worknumber
+		url = url + parameter
+		
 	params = {}
 	req = urllib2.Request(url,  json.dumps(params), headers={"Authorization": basic_authorization('bdonnelly', 'rules'),"Content-Type": "application/json", "Accept": "*/*", })
 	result = urllib2.urlopen(req)
@@ -65,9 +75,6 @@ def makeYqlQuery(req):
 
 def makeWebhookResult(data):
 	speech = data.get("GHMessage")
-	#if data.get("Device") is None:
-	#	speech = "Nothing gotten"
-	#	speech = "Testing Pega"
 	if speech is None:
 		speech="Nothing Gotten"
 
