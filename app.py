@@ -44,7 +44,7 @@ def processRequest(req):
 	if req.get("result").get("action") == "Unpair":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
-	if req.get("result").get("action") == "CheckPair":
+	if req.get("result").get("action") == "PairCheck":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome2/Services/CheckPair"
 	
 	if req.get("result").get("action") == "Escalation":
