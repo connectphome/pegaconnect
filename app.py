@@ -45,13 +45,13 @@ def processRequest(req):
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
 	if req.get("result").get("action") == "PairCheck":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome2/Services/CheckPair"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/CheckPairing/Services/CheckPair"
 	
 	if req.get("result").get("action") == "Escalation":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
 	if req.get("result").get("action") == "GetStep":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"	
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep"	
 	
 	if req.get("result").get("action") == "StartTroubleshoot":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
@@ -61,7 +61,7 @@ def processRequest(req):
    		parameters = result.get("parameters")
 		worknumber = parameters.get("number-integer")
 
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData?"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Register/Services/Register?"
 		parameter = "worknumber=" + worknumber
 		url = url + parameter
 		
