@@ -61,7 +61,7 @@ def processRequest(req):
    		parameters = result.get("parameters")
 		worknumber = parameters.get("number-integer")
 
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Register/Services/Register?"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Register/Services/ProcessData?"
 		parameter = "worknumber=" + worknumber
 		url = url + parameter
 		
