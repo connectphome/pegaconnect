@@ -41,6 +41,12 @@ def basic_authorization(user, password):
 
 def processRequest(req):
 	
+	if req.get("result").get("action") == "Unpair":
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
+	
+	if req.get("result").get("action") == "CheckPair":
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
+	
 	if req.get("result").get("action") == "Escalation":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
