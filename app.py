@@ -51,7 +51,7 @@ def processRequest(req):
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
 	if req.get("result").get("action") == "GetStep":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep"	
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep?gid=10103"
 	
 	if req.get("result").get("action") == "StartTroubleshoot":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
