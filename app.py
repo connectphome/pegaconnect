@@ -52,7 +52,7 @@ def processRequest(req):
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Escalate/Services/Escalate?gid=" + gid + "&command=Escalate"
 	
 	if req.get("result").get("action") == "GetStep":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep?gid=12345"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep?gid=" + gid
 	
 	if req.get("result").get("action") == "StartTroubleshoot":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
