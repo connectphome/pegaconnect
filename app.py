@@ -48,7 +48,7 @@ def processRequest(req):
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/CheckPairing/Services/CheckPairing"
 	
 	if req.get("result").get("action") == "Escalation":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Escalate/Services/Escalate?gid=12345&command=Escalate"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Escalate/Services/Escalate?gid=123&command=Escalate"
 	
 	if req.get("result").get("action") == "GetStep":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/GetStep/Services/GetStep?gid=12345"
