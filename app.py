@@ -46,7 +46,7 @@ def processRequest(req):
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
 	if req.get("result").get("action") == "CheckPairing":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/CheckPairing/Services/CheckPairing"
+		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/CheckPairing/Services/CheckPair"
 	
 	if req.get("result").get("action") == "Escalation":
 		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Escalate/Services/Escalate?gid=" + gid + "&command=Escalate"
