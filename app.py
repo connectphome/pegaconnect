@@ -43,26 +43,26 @@ def basic_authorization(user, password):
 def processRequest(req):
 	
 	if req.get("result").get("action") == "Unpair":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Unpair/Services/Unpair?gid=" + gid
+		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/Unpair/Services/Unpair?gid=" + gid
 	
 	if req.get("result").get("action") == "CheckPairing":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/CheckPairing/Services/CheckPair"
+		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/CheckPairing/Services/CheckPair"
 	
 	if req.get("result").get("action") == "Escalation":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/Escalate/Services/Escalate?gid=" + gid + "&command=Escalate"
+		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/Escalate/Services/Escalate?gid=" + gid + "&command=Escalate"
 	
 	if req.get("result").get("action") == "GetStep":
 		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/GetStep/Services/GetStep?gid=" + gid
 	
 	if req.get("result").get("action") == "StartTroubleshoot":
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
+		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/HomeAISmartHomeIntGoogleHome/Services/ProcessData"
 	
 	if req.get("result").get("action") == "Register":
 		result = req.get("result")
    		parameters = result.get("parameters")
 		worknumber = parameters.get("number-integer")
 
-		url = "http://acc-pw17.pegatsdemo.com:8080/prweb/PRHTTPService/RegisterHome/Services/RegisterGH?"
+		url = "http://acc-pw17.pegatsdemo.com/prweb/PRHTTPService/RegisterHome/Services/RegisterGH?"
 		parameter = "worknumber=" + worknumber
 		url = url + parameter
 		
